@@ -36,5 +36,5 @@ export class Board {
 
   @ManyToOne(() => BoardList)
   @Field(() => BoardList)
-  boarlist: BoardList;
+  boardlist: BoardList;
 }
