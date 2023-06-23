@@ -11,4 +11,4 @@ import { ProductCategoriesService } from './productCategories.service';
     ProductCategoriesService,
   ],
 })
-export class ProdcutCategoriesModule {}
+export class ProductCategoriesModule {}

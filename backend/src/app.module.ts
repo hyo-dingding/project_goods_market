@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './apis/auth/auth.module';
 import { OrdersPaymentsModule } from './apis/orderPayments/ordersPayments.module';
 import { ProductModule } from './apis/products/product.module';
-import { ProdcutCategoriesModule } from './apis/productsCategories/productCategories.module';
+import { ProductCategoriesModule } from './apis/productsCategories/productCategories.module';
 import { UsersModule } from './apis/users/users.module';
 
 @Module({
@@ -14,7 +14,7 @@ import { UsersModule } from './apis/users/users.module';
     OrdersPaymentsModule,
     AuthModule,
     ProductModule,
-    ProdcutCategoriesModule,
+    ProductCategoriesModule,
     UsersModule,
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
