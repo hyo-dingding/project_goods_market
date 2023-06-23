@@ -1,0 +1,148 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  email: String!
+  name: String!
+  birth: String
+  gender: String
+  userGrade: String!
+  phone: String!
+  point: Int!
+}
+
+type ProductCategory {
+  id: String!
+  categoryName: String!
+}
+
+type ProductImage {
+  id: String!
+  image: String!
+  products: [Product!]!
+}
+
+type ProductDiscount {
+  id: String!
+  discountPrice: Int!
+}
+
+type Product {
+  id: String!
+  name: String!
+  price: Int!
+  deliveryPrice: Int!
+  maxQ: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  contents: String!
+  stock: Int!
+  productCategory: ProductCategory!
+  productDiscount: ProductDiscount!
+  productImages: [ProductImage!]!
+  deletedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type OrderPayment {
+  id: String!
+  impUid: String!
+  amount: Int!
+  orderState: ORDER_PAYMENT_STATE_ENUM!
+  createdAt: DateTime!
+}
+
+enum ORDER_PAYMENT_STATE_ENUM {
+  PAYMENT
+  CANCEL
+}
+
+type BoardList {
+  id: String!
+  title: String!
+}
+
+type Query {
+  fetchProducts: [Product!]!
+  fetchProduct(productId: String!): Product!
+  fetchProductsWithDeleted: [Product!]!
+  fetchUsers: [User!]!
+  fetchUser(email: String!): User!
+  fetchLoginUser: User!
+}
+
+type Mutation {
+  createOrderPayment(impUid: String!, amount: Int!): OrderPayment!
+  userLogin(email: String!, password: String!): String!
+  restoreAccessToken: String!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(productId: String!): Boolean!
+  restoreProduct(productId: String!): Boolean!
+  createProductCategory(categoryName: String!): ProductCategory!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(userId: String!, updateUserInput: UpdateUserInput!): User!
+  updateLoginPwd(password: String!): User!
+  deleteUser(userId: String!): Boolean!
+  deleteLoginUser: Boolean!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Int!
+  deliveryPrice: Int!
+  maxQ: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  contents: String!
+  stock: Int!
+  productCategoryId: String!
+  productDiscount: ProductDiscountInput!
+  productImages: [String!]!
+}
+
+input ProductDiscountInput {
+  discountPrice: Int!
+}
+
+input UpdateProductInput {
+  name: String
+  price: Int
+  deliveryPrice: Int
+  maxQ: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  contents: String
+  stock: Int
+  productCategoryId: String
+  productDiscount: ProductDiscountInput
+  productImages: [String!]
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+  password: String!
+  birth: String!
+  gender: String!
+  userGrade: String = "Bronze"
+  phone: String!
+  point: Int = 0
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+  password: String
+  birth: String
+  gender: String
+  userGrade: String = "Bronze"
+  phone: String
+  point: Int = 0
+}
