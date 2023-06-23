@@ -37,4 +37,6 @@ export class Order {
   @JoinColumn()
   @OneToOne(() => UserAddress)
   userAddress: UserAddress;
+
+
 }
