@@ -41,7 +41,7 @@ export class User {
   @Field(() => String)
   phone: string;
 
-
+// 임시
   @Column({ default: 0 })
   @Field(() => Int)
   point: number;
